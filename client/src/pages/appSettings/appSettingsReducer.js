@@ -24,9 +24,10 @@ function updateAppColors(state, payload) {
 }
 
 function updateAppSettingsErrorMessage(state, payload) {
+  const { errorMessage } = payload
   return {
     ...state,
-    appSettingsMessage: payload.errorMessage
+    appSettingsMessage: errorMessage
   };
 }
 

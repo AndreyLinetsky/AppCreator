@@ -55,5 +55,5 @@ export default function AppMockContainer({ children, appColors }) {
 
 AppMockContainer.propTypes = {
   children: PropTypes.node,
-  appColor: PropTypes.object
+  appColors: PropTypes.object
 };

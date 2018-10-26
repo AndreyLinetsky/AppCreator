@@ -26,7 +26,7 @@ export default function ImagesMockPanel({ imageUrls, imageBorderColor }) {
     <StyledContainer>
       {imageUrls.map((url, key) => (
         <StyledListItem {...{ key }}>
-          <StyledImage {...{ key, src: url, imageBorderColor }} />
+          <StyledImage {...{ src: url, imageBorderColor }} />
         </StyledListItem>
       ))}
     </StyledContainer>
