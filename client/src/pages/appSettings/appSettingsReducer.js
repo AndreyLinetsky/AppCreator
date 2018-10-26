@@ -15,15 +15,10 @@ export const initialState = {
 };
 
 function updateAppColors(state, payload) {
-  const {
-    appColors: { first: backgroundColor, second: color }
-  } = payload;
+  const { appColors } = payload;
   return {
     ...state,
-    appColors: {
-      backgroundColor,
-      color
-    },
+    appColors,
     appSettingsMessage: APP_SETTINGS_UPLOAD_IMAGE_SUCCESS_MESSAGE
   };
 }
