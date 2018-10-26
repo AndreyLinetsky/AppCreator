@@ -1,6 +1,6 @@
 let express = require('express');
 let routes = require('./routes/appCreator');
-const cloudinary = require('cloudinary');
+let cloudinary = require('cloudinary');
 let cors = require('cors');
 let bodyParser = require('body-parser');
 let helmet = require('helmet');
