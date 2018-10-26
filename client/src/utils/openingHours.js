@@ -1,21 +1,37 @@
 export function getToSelectOptions(options, minOption) {
-    if (!minOption) {
-      return options;
-    }
-  
-    const minOptionIndex = options.findIndex(t => t.value === minOption);
-    return options.slice(minOptionIndex);
+  if (!minOption.value) {
+    return options;
   }
-  
-  export function getFromSelectOptions(options, maxOption) {
-    if (!maxOption) {
-      return options;
-    }
-  
-    const maxOptionIndex =  options.findIndex(t => t.value === maxOption);
-    return options.slice(0, maxOptionIndex + 1);
+
+  const minOptionIndex = options.findIndex(t => t.value === minOption.value);
+  return options.slice(minOptionIndex);
+}
+
+export function getFromSelectOptions(options, maxOption) {
+  if (!maxOption.value) {
+    return options;
   }
-  
-  export function convertHourToDisplayString(hour){
-      return hour ? `${hour}:00` : ''
-  }
+
+  const maxOptionIndex = options.findIndex(t => t.value === maxOption.value);
+  return options.slice(0, maxOptionIndex + 1);
+}
+
+export function convertHourToDisplayString(hour) {
+  return hour || hour === 0 ? `${hour}:00` : '';
+}
+
+function getOptionalLabel({ label }) {
+  return label || '';
+}
+
+export function getOpeningHourDisplayString({
+  fromHour,
+  toHour,
+  fromDay,
+  toDay
+}) {
+  return {
+    dayRange: `${getOptionalLabel(fromDay)} - ${getOptionalLabel(toDay)}`,
+    hourRange: `${getOptionalLabel(fromHour)} - ${getOptionalLabel(toHour)}`
+  };
+}

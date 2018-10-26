@@ -5,34 +5,33 @@ import React from 'react';
 const StyledContainer = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 15px 5px;
-`
+  margin: 15px 10px;
+`;
 
-const StyledName = styled.h4`
+const StyledHeadline = styled.h4`
   margin: 0;
   text-align: center;
   font-weight: 400;
-`
+  min-height: 20px;
+`;
 
-const StyledLink = styled.a`
-  
-`
+export default function AboutUsMockPanel({ name, description, url }) {
+  return (
+    <StyledContainer>
+      <StyledHeadline>{name}</StyledHeadline>
+      <p>{description}</p>
+      {url && (
+        <>
+          <div>Join us on:</div>
+          <a {...{ href: url }}>{url}</a>
+        </>
+      )}
+    </StyledContainer>
+  );
+}
 
-export default function AboutUsMockPanel({ name, description, url, appColors }) {    
-    return (
-      <StyledContainer>
-        <StyledName>{name}</StyledName>
-        <p>{description}</p>
-        Join us on:
-        <StyledLink {...{href: url}}>{url}</StyledLink>
-      </StyledContainer>
-    );
-  }
-  
-  AboutUsMockPanel.propTypes = {
-    description: PropTypes.string,
-    name: PropTypes.string,
-    url: PropTypes.string,
-    appColors: PropTypes.object
-  };
-  
+AboutUsMockPanel.propTypes = {
+  description: PropTypes.string,
+  name: PropTypes.string,
+  url: PropTypes.string
+};

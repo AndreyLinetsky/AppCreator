@@ -6,7 +6,7 @@ export const initialState = {
   imagesDisplayErrorMessage: ''
 };
 
-function setImageUrls(state, payload) {
+function updateImageUrls(state, payload) {
   const { imageUrls } = payload;
   return {
     ...state,
@@ -15,7 +15,7 @@ function setImageUrls(state, payload) {
   };
 }
 
-function setImageSearchKeyword(state, payload) {
+function updateImageSearchKeyword(state, payload) {
   const { imageSearchKeyword } = payload;
   return {
     ...state,
@@ -23,22 +23,23 @@ function setImageSearchKeyword(state, payload) {
   };
 }
 
-function setDisplayImagesError(state, payload) {
+function updateDisplayImagesError(state, payload) {
+  const { errorMessage } = payload;
   return {
     ...state,
     imageUrls: [],
-    imagesDisplayErrorMessage: payload.errorMessage
+    imagesDisplayErrorMessage: errorMessage
   };
 }
 
 const imagesReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.DISPLAY_IMAGES.success:
-      return setImageUrls(state, action.payload);
+      return updateImageUrls(state, action.payload);
     case actionTypes.DISPLAY_IMAGES.error:
-      return setDisplayImagesError(state, action.payload);
+      return updateDisplayImagesError(state, action.payload);
     case actionTypes.UPDATE_IMAGE_SEARCH_KEYWORD:
-      return setImageSearchKeyword(state, action.payload);
+      return updateImageSearchKeyword(state, action.payload);
     default:
       return state;
   }

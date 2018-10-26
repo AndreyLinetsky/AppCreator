@@ -4,28 +4,33 @@ import React from 'react';
 import { fieldStyle } from '../../styles/commonStyles';
 import FieldWrapper from './FieldWrapper';
 
-const StyledTextarea = styled.textarea`
+const StyledInputFile = styled.input`
   ${fieldStyle};
-  resize: none;
+  background-color: initial;
+  padding: 0;
+  margin-top: 5px;
+  :focus {
+    outline: 0;
+  }
 `;
 
-export default function TextareaField({ value, label, onChange, name }) {
-  const textareaProps = {
+export default function InputFileField({ accept, label, onChange, name }) {
+  const inputFileProps = {
     name,
     onChange,
-    value,
-    rows: 7
+    accept,
+    type: 'file'
   };
   return (
     <FieldWrapper {...{ label }}>
-      <StyledTextarea {...textareaProps} />
+      <StyledInputFile {...inputFileProps} />
     </FieldWrapper>
   );
 }
 
-TextareaField.propTypes = {
+InputFileField.propTypes = {
   label: PropTypes.string,
   name: PropTypes.string,
-  value: PropTypes.string,
+  accept: PropTypes.string,
   onChange: PropTypes.func
 };

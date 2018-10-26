@@ -4,25 +4,40 @@ import * as actions from './actions';
 import Button from '../../components/button/Button';
 import OpeningHoursMockPanel from './components/OpeningHoursMockPanel';
 import OpeningHour from './components/OpeningHour';
-import { getOpeningHoursSelector
+import {
+  getOpeningHoursSelector,
+  getAppColorsSelector
 } from './openingHoursSelector';
 import { StyledMain } from '../../styles/commonStyles';
-import MenuAndAppCreatorContainer from '../../components/MenuAndAppCreatorContainer';
-import AppMockContainer from '../../components/AppMockContainer';
+import MenuAndAppCreatorContainer from '../../containers/MenuAndAppCreatorContainer';
+import AppMockContainer from '../../containers/AppMockContainer';
 import styled from 'styled-components';
 
 const StyledContainer = styled.div`
   display: flex;
   flex-direction: column;
-`
+`;
+const StyledList = styled.ul`
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+`;
 
 function mapStateToProps(state) {
   return {
-    openingHours: getOpeningHoursSelector(state)
+    openingHours: getOpeningHoursSelector(state),
+    appColors: getAppColorsSelector(state)
   };
 }
 
-function OpeningHours({ openingHours, updateOpeningHour, addOpeningHour }) {  
+function OpeningHours({
+  openingHours,
+  updateOpeningHour,
+  addOpeningHour,
+  appColors
+}) {
   const buttonProps = {
     text: 'Add',
     onClick: addOpeningHour
@@ -36,12 +51,15 @@ function OpeningHours({ openingHours, updateOpeningHour, addOpeningHour }) {
     <StyledMain>
       <MenuAndAppCreatorContainer>
         <StyledContainer>
-          {openingHours.map((openingHour, key) => 
-            <OpeningHour {...{key, openingHour, updateOpeningHour}}/>)}
+          <StyledList>
+            {openingHours.map((openingHour, key) => (
+              <OpeningHour {...{ key, openingHour, updateOpeningHour }} />
+            ))}
+          </StyledList>
           <Button {...buttonProps} />
-          </StyledContainer>
+        </StyledContainer>
       </MenuAndAppCreatorContainer>
-      <AppMockContainer>
+      <AppMockContainer {...{ appColors }}>
         <OpeningHoursMockPanel {...mockPanelProps} />
       </AppMockContainer>
     </StyledMain>

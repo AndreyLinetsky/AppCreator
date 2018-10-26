@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { withRouter } from 'react-router-dom';
-import { MENU_OPTIONS, ROUTE_PATHS } from '../consts/routes';
-import MenuOption from './MenuOption'
+import { MENU_OPTIONS, ROUTE_PATHS } from '../../consts/routes';
+import MenuOption from './MenuOption';
 
 const { ABOUT_US, DEFAULT } = ROUTE_PATHS;
 
@@ -17,19 +17,19 @@ const StyledList = styled.ul`
   display: flex;
   flex-direction: row;
   margin: 0 -20px;
-`
+`;
 
 function NavigationMenu({ location }) {
   const { pathname: activeRoutePath } = location;
   return (
     <StyledContainer>
-        <StyledList>
-      {MENU_OPTIONS.map((option, key) => {
-        const isSelected =
-          option.to === activeRoutePath ||
-          (option.to === ABOUT_US && activeRoutePath === DEFAULT);
-        return <MenuOption {...{ key, isSelected, ...option }} />;
-      })}
+      <StyledList>
+        {MENU_OPTIONS.map((option, key) => {
+          const isSelected =
+            option.to === activeRoutePath ||
+            (option.to === ABOUT_US && activeRoutePath === DEFAULT);
+          return <MenuOption {...{ key, isSelected, ...option }} />;
+        })}
       </StyledList>
     </StyledContainer>
   );

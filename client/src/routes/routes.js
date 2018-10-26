@@ -1,10 +1,11 @@
-import AboutUs from '../pages/aboutUs/';
-import Images from '../pages/images/';
-import OpeningHours from '../pages/openingHours/';
+import AboutUs from '../pages/aboutUs';
+import Images from '../pages/images';
+import OpeningHours from '../pages/openingHours';
 import AppSettings from '../pages/appSettings';
 import { ROUTE_PATHS } from '../consts/routes';
 
-const { OPENING_HOURS, IMAGES, DEFAULT, APP_SETTINGS, ABOUT_US } = ROUTE_PATHS;
+const { ABOUT_US, APP_SETTINGS, IMAGES, OPENING_HOURS, DEFAULT } = ROUTE_PATHS;
+
 const defaultComponent = AboutUs;
 
 export const routes = [
@@ -26,7 +27,7 @@ export const routes = [
     path: OPENING_HOURS
   },
   {
-    component: defaultComponent,
+    component: AppSettings,
     path: APP_SETTINGS
   }
 ];

@@ -13,4 +13,7 @@ const urlSelector = state => state.aboutUs.url;
 export const getUrlSelector = createSelector(urlSelector, url => url);
 
 const appColorsSelector = state => state.appSettings.appColors;
-export const getAppColorsSelector = createSelector(appColorsSelector, appColors => appColors);
+export const getAppColorsSelector = createSelector(
+  appColorsSelector,
+  appColors => appColors
+);

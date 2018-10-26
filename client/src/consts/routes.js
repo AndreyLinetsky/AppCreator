@@ -6,7 +6,7 @@ export const ROUTE_PATHS = {
   APP_SETTINGS: '/AppSettings'
 };
 
-const { ABOUT_US, APP_SETTINGS, IMAGES, OPENING_HOURS} = ROUTE_PATHS
+const { ABOUT_US, APP_SETTINGS, IMAGES, OPENING_HOURS } = ROUTE_PATHS;
 
 export const MENU_OPTIONS = [
   {

@@ -1,6 +1,6 @@
 let router = require('express').Router();
-let appCreatorController = require('../controllers/appCreator') 
+let appCreatorController = require('../controllers/appCreator');
 
- router.route('/companyLogo').post(appCreatorController.uploadCompanyLogo)
+router.route('/uploadImage').post(appCreatorController.uploadImage);
 
- module.exports = router
+module.exports = router;

@@ -4,9 +4,9 @@ import React from 'react';
 
 const StyledContainer = styled.div`
   position: relative;
-  width: 200px;
+  width: 220px;
   height: 400px;
-  margin: auto;
+  margin: 0 auto;
   border: 16px black solid;
   border-top-width: 60px;
   border-bottom-width: 60px;
@@ -38,18 +38,22 @@ const StyledContainer = styled.div`
 `;
 
 const StyledContent = styled.div`
-height: 100%;
-overflow-y: auto;
+  height: 100%;
+  overflow-y: auto;
+  font-size: 12px;
+  color: ${({ color }) => color};
+  background-color: ${({ backgroundColor }) => backgroundColor};
 `;
 
-export default function AppMockContainer({ children }) {  
+export default function AppMockContainer({ children, appColors }) {
   return (
     <StyledContainer>
-      <StyledContent>{children}</StyledContent>
+      <StyledContent {...appColors}>{children}</StyledContent>
     </StyledContainer>
   );
 }
 
 AppMockContainer.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
+  appColor: PropTypes.object
 };

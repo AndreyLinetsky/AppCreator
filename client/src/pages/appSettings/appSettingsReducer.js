@@ -1,41 +1,55 @@
 import { actionTypes } from './actions';
 import {
   DEFAULT_BACKGROUND_COLOR,
-  DEFAULT_COLOR
-} from '../../consts/defaultAppSettings';
+  DEFAULT_COLOR,
+  APP_SETTINGS_UPLOAD_IMAGE_SUCCESS_MESSAGE,
+  APP_SETTINGS_UPLOAD_IMAGE_IN_PROGRESS_MESSAGE
+} from '../../consts/appSettings';
 
 export const initialState = {
   appColors: {
     backgroundColor: DEFAULT_BACKGROUND_COLOR,
-    color: DEFAULT_COLOR,
-  } , 
-  appSettingsErrorMessage: ''
+    color: DEFAULT_COLOR
+  },
+  appSettingsMessage: ''
 };
 
-function setAppColors(state, payload) {
+function updateAppColors(state, payload) {
   const {
-    appColors
+    appColors: { first: backgroundColor, second: color }
   } = payload;
   return {
     ...state,
-    appColors,
-    submitCommentErrorMessage: ''
+    appColors: {
+      backgroundColor,
+      color
+    },
+    appSettingsMessage: APP_SETTINGS_UPLOAD_IMAGE_SUCCESS_MESSAGE
   };
 }
 
-function setAppSettingsErrorMessage(state, payload) {
+function updateAppSettingsErrorMessage(state, payload) {
   return {
     ...state,
-    appSettingsErrorMessage: payload.errorMessage
+    appSettingsMessage: payload.errorMessage
+  };
+}
+
+function updateAppSettingsInProgressMessage(state) {
+  return {
+    ...state,
+    appSettingsMessage: APP_SETTINGS_UPLOAD_IMAGE_IN_PROGRESS_MESSAGE
   };
 }
 
 const appSettingsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.SET_APP_COLORS_FROM_IMAGE.success:
-      return setAppColors(state, action.payload);
-    case actionTypes.SET_APP_COLORS_FROM_IMAGE.error:
-      return setAppSettingsErrorMessage(state, action.payload);
+    case actionTypes.UPDATE_APP_COLORS_FROM_IMAGE.success:
+      return updateAppColors(state, action.payload);
+    case actionTypes.UPDATE_APP_COLORS_FROM_IMAGE.error:
+      return updateAppSettingsErrorMessage(state, action.payload);
+    case actionTypes.UPDATE_APP_COLORS_FROM_IMAGE.pending:
+      return updateAppSettingsInProgressMessage(state);
     default:
       return state;
   }

@@ -1,15 +1,14 @@
 import { apiRequestActions } from '../../../utils/apiRequestActions';
 
 export const actionTypes = {
-  SET_APP_COLORS_FROM_IMAGE: apiRequestActions('SET_APP_COLORS_FROM_IMAGE')
+  UPDATE_APP_COLORS_FROM_IMAGE: apiRequestActions('UPDATE_APP_COLORS_FROM_IMAGE')
 };
-  
-  export function setAppColorsFromImage({ imagePath }) {
-    return {
-      type: actionTypes.SET_APP_COLORS_FROM_IMAGE.pending,
-      payload: {
-        imagePath
-      }
-    };
-  }
-  
+
+export function updateAppColorsFromImage({ fileBlob }) {
+  return {
+    type: actionTypes.UPDATE_APP_COLORS_FROM_IMAGE.pending,
+    payload: {
+      fileBlob
+    }
+  };
+}

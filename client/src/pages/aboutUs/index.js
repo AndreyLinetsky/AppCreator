@@ -11,8 +11,8 @@ import {
   getUrlSelector
 } from './aboutUsSelector';
 import { StyledMain } from '../../styles/commonStyles';
-import MenuAndAppCreatorContainer from '../../components/MenuAndAppCreatorContainer';
-import AppMockContainer from '../../components/AppMockContainer';
+import MenuAndAppCreatorContainer from '../../containers/MenuAndAppCreatorContainer';
+import AppMockContainer from '../../containers/AppMockContainer';
 
 function mapStateToProps(state) {
   return {
@@ -24,7 +24,7 @@ function mapStateToProps(state) {
 }
 
 function AboutUs({ updateField, name, description, url, appColors }) {
-  const onChange = event => {
+  const onChange = (event) => {
     const {
       target: { name: fieldName, value: fieldValue }
     } = event;
@@ -53,18 +53,17 @@ function AboutUs({ updateField, name, description, url, appColors }) {
   const mockPanelProps = {
     name,
     description,
-    url,
-    appColors
+    url
   };
 
   return (
     <StyledMain>
       <MenuAndAppCreatorContainer>
-          <InputField {...nameFieldProps} />
-          <TextareaField {...descriptionFieldProps} />
-          <InputField {...urlFieldProps} />
+        <InputField {...nameFieldProps} />
+        <TextareaField {...descriptionFieldProps} />
+        <InputField {...urlFieldProps} />
       </MenuAndAppCreatorContainer>
-      <AppMockContainer>
+      <AppMockContainer {...{ appColors }}>
         <AboutUsMockPanel {...mockPanelProps} />
       </AppMockContainer>
     </StyledMain>
