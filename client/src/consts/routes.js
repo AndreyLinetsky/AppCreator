@@ -12,21 +12,21 @@ export const MENU_OPTIONS = [
   {
     text: 'About Us',
     to: ABOUT_US,
-    color: 'orange'
+    color: 'peachpuff'
   },
   {
     text: 'Images',
     to: IMAGES,
-    color: 'blue'
+    color: 'lightblue'
   },
   {
     text: 'Opening Hours',
     to: OPENING_HOURS,
-    color: 'green'
+    color: 'lightgreen'
   },
   {
     text: 'App Settings',
     to: APP_SETTINGS,
-    color: 'red'
+    color: 'lightgoldenrodyellow'
   }
 ];

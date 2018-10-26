@@ -1,39 +1,45 @@
 import { actionTypes } from './actions';
 
-const initialOpeningHourTimeFrame = {
-  dayFrom: '',
-  dayTo: '',
-  hourFrom: '',
-  hourTo: ''
+let currentId = 0;
+
+const initialOpeningHour = {
+  fromDay: '',
+  toDay: '',
+  fromHour: '',
+  toHour: ''
 }
 
 export const initialState = {
   openingHours: []
 };
 
-function addOpeningHours(state, payload) {
-  const { fieldName, fieldValue } = payload;
+function addOpeningHour(state) {
   return {
     ...state,
-    [fieldName]: fieldValue
+    openingHours: [
+      ...state.openingHours,
+      {...initialOpeningHour, id: currentId++}
+    ]
   };
 }
 
-function updateOpeningHours(state, payload) {
-    const { fieldName, fieldValue } = payload;
+function updateOpeningHour(state, payload) {
+    const { id, fieldName, fieldValue } = payload;
     return {
       ...state,
-      [fieldName]: fieldValue
+      openingHours: state.openingHours.map(item => item.id === id ? {...item, [fieldName]: fieldValue} : item )
     };
   }
 
-const aboutUsReducer = (state = initialState, action) => {
+const openingHoursReducer = (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.UPDATE_FIELD:
-      return updateField(state, action.payload);
+    case actionTypes.ADD_OPENING_HOUR:
+      return addOpeningHour(state);
+      case actionTypes.UPDATE_OPENING_HOUR:
+      return updateOpeningHour(state, action.payload);
     default:
       return state;
   }
 };
 
-export default aboutUsReducer;
+export default openingHoursReducer;

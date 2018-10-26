@@ -7,7 +7,7 @@ export const getImageUrlsSelector = createSelector(
 );
 
 const imageSearchKeywordSelector = state => state.images.imageSearchKeyword;
-export const getDescriptionSelector = createSelector(
+export const getImageSearchKeywordSelector = createSelector(
   imageSearchKeywordSelector,
   imageSearchKeyword => imageSearchKeyword
 );

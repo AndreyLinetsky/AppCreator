@@ -2,10 +2,10 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-const StyledContainer = styled.main`
+const StyledContainer = styled.div`
   position: relative;
-  width: 360px;
-  height: 640px;
+  width: 200px;
+  height: 400px;
   margin: auto;
   border: 16px black solid;
   border-top-width: 60px;
@@ -38,12 +38,11 @@ const StyledContainer = styled.main`
 `;
 
 const StyledContent = styled.div`
-  width: 360px;
-  height: 640px;
+height: 100%;
+overflow-y: auto;
 `;
 
 export default function AppMockContainer({ children }) {  
-  console.log(children)
   return (
     <StyledContainer>
       <StyledContent>{children}</StyledContent>

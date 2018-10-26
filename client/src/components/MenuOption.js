@@ -3,17 +3,32 @@ import styled from 'styled-components';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const maybeSelected = (isSelected) =>
-   isSelected ? 'border: 1px solid black' : '' 
-const StyledOption = styled.li`
+const StyledListItem = styled.li`
+  margin: 0 20px;
+`
+const maybeSelected = ({isSelected}) =>
+   isSelected ? 'border: 2px solid black' : '' 
+const StyledOption = styled.div`
   margin: 10px 0;
-  
-  
-  border-radius: 3px;
+  height: 70px;
+  width: 80px;
+  border-radius: 10px;
+  text-align: center; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: ${({color}) => color};
+  border: none;  
+  ${maybeSelected};
 `;
 
 const StyledLink = styled(Link)`
   text-decoration: none;
+  :link,
+  :visited,
+  :hover {
+    color: initial;
+  }
 `;
 
 export default function MenuOption({ isSelected, to, text, color }) {
@@ -22,9 +37,13 @@ export default function MenuOption({ isSelected, to, text, color }) {
     isSelected
   };
   return (
-    <StyledOption {...optionProps}>
-      <StyledLink {...{ to }}>{text}</StyledLink>
-    </StyledOption>
+    <StyledListItem>
+      <StyledLink {...{ to }}>
+      <StyledOption  {...optionProps}>
+      {text}
+      </StyledOption>
+      </StyledLink>
+    </StyledListItem>
   );
 }
 

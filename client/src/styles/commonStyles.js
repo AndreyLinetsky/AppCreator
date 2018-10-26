@@ -3,15 +3,20 @@ import styled from 'styled-components'
 export const StyledMain = styled.main`
   display: flex;
   flex-direction: row;
+  width: 800px;
+  margin: 20px;
+  padding: 30px;
+  border: 1px solid lightblue;
 `
 
-export const buttonStyle = `
-cursor: pointer;
-border: none;
-:active {
-  transform: translateY(1px);
-}
+export const fieldStyle = `
+  padding: 7px 8px;
+  font-family: inherit;
+  font-size: 12px;
+  border-width: 1px;
+  background-color: lightgrey;
 `;
+
 
 export const inputStyle = `
   padding: 7px 8px;

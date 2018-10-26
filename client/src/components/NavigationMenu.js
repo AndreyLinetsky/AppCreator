@@ -7,14 +7,16 @@ import MenuOption from './MenuOption'
 const { ABOUT_US, DEFAULT } = ROUTE_PATHS;
 
 const StyledContainer = styled.nav`
-  display: flex;
-  flex-direction: row;
+  padding: 5px;
 `;
 
 const StyledList = styled.ul`
   list-style: none;
   margin: 0;
   padding: 0;
+  display: flex;
+  flex-direction: row;
+  margin: 0 -20px;
 `
 
 function NavigationMenu({ location }) {

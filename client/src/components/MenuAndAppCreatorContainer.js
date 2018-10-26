@@ -12,10 +12,11 @@ const StyledAppCreatorContainer = styled.div`
   display: flex;
   flex-direction: column;
   border: 1px solid blue;
+  padding: 10px 20px;
+  margin-top: 10px;
 `
 
 export default function MenuAndAppCreatorContainer({ children }) {
-  console.log(children)
   return (
     <StyledContainer>
       <NavigationMenu />

@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import * as actions from './actions';
-import FieldWithLabel from './components/FieldWithLabel';
+import InputField from '../../components/fields/InputField';
+import TextareaField from '../../components/fields/TextareaField';
 import AboutUsMockPanel from './components/AboutUsMockPanel';
 import {
   getAppColorsSelector,
@@ -38,7 +39,7 @@ function AboutUs({ updateField, name, description, url, appColors }) {
   };
   const descriptionFieldProps = {
     label: 'Description',
-    name: 'Description',
+    name: 'description',
     value: description,
     onChange
   };
@@ -59,9 +60,9 @@ function AboutUs({ updateField, name, description, url, appColors }) {
   return (
     <StyledMain>
       <MenuAndAppCreatorContainer>
-          <FieldWithLabel {...nameFieldProps} />
-          <FieldWithLabel {...descriptionFieldProps} />
-          <FieldWithLabel {...urlFieldProps} />
+          <InputField {...nameFieldProps} />
+          <TextareaField {...descriptionFieldProps} />
+          <InputField {...urlFieldProps} />
       </MenuAndAppCreatorContainer>
       <AppMockContainer>
         <AboutUsMockPanel {...mockPanelProps} />

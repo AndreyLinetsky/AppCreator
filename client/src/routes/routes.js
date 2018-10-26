@@ -10,7 +10,8 @@ const defaultComponent = AboutUs;
 export const routes = [
   {
     component: defaultComponent,
-    path: DEFAULT
+    path: DEFAULT,
+    exact: true
   },
   {
     component: AboutUs,
@@ -25,7 +26,7 @@ export const routes = [
     path: OPENING_HOURS
   },
   {
-    component: AppSettings,
+    component: defaultComponent,
     path: APP_SETTINGS
   }
 ];

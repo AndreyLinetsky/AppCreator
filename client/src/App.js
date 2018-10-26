@@ -9,8 +9,8 @@ export default function App() {
       <GlobalStyle />
       <BrowserRouter>
         <Switch>
-          {routes.map(({ component, path }) => (
-            <Route {...{ component, path }} />
+          {routes.map(({ component, path, exact }, key) => (
+            <Route {...{ key, component, path, exact }} />
           ))}
         </Switch>
       </BrowserRouter>
